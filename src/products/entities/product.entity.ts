@@ -42,6 +42,8 @@ export class Product {
   })
   updateData: Date;
 
+  // La relacion que tiene el 1 es la que lleva la relacion
+  // Ejemplo: 1 producto solo puede tener una marca
   @ManyToOne(() => Brand, (item) => item.product)
   brand: Brand;
 }
