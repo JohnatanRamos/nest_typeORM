@@ -6,9 +6,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 
 import { Brand } from './brand.entity';
+import { Category } from './category.entity';
 
 @Entity()
 export class Product {
@@ -46,4 +49,8 @@ export class Product {
   // Ejemplo: 1 producto solo puede tener una marca
   @ManyToOne(() => Brand, (item) => item.product)
   brand: Brand;
+
+  @ManyToMany(() => Category, (item) => item.product)
+  @JoinTable()
+  category: Category[];
 }
